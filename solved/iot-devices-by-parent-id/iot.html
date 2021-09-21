@@ -1,0 +1,149 @@
+<h1>Get IOT devices by Parent Id</h1>
+<div class="ps-content-wrapper-v0">
+<p>In this challenge, the REST API contains information about a collection of IoT devices. Given the status query and the identifier of the parent device, get the average rotor speed of available IoT devices with the given status parent identifier.</p>
+
+<p>&nbsp;</p>
+
+<p>To access the collection of devices, perform an HTTP GET request to:</p>
+
+<p>https://jsonmock.hackerrank.com/api/iot_devices/search?status=&lt;statusQuery&gt;&amp;page=&lt;pageNumber&gt;</p>
+
+<p>where &lt;statusQuery&gt; is a given string to query and &lt;pageNumber&gt; is the page number of the results to return.</p>
+
+<p>&nbsp;</p>
+
+<p>For example, GET request to:</p>
+
+<p>https://jsonmock.hackerrank.com/api/iot_devices/search?status=STOP&amp;page=2</p>
+
+<p>will return the second page of the devices with their status containing "STOP".</p>
+
+<p>&nbsp;</p>
+
+<p>The response to such request is a JSON with the following 5 fields:</p>
+
+<p>&nbsp;</p>
+
+<ul>
+	<li>
+<code>page</code>: The current page of the results</li>
+	<li>
+<code>per_page</code>: The maximum number of devices returned per page.</li>
+	<li>
+<code>total</code>: The total number of devices available on all pages of the result.</li>
+	<li>
+<code>total_pages</code>: The total number of pages with results.</li>
+	<li>
+<code>data</code>: An&nbsp;array of objects containing devices returned on the requested page</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>Each device object has the following schema:</p>
+
+<ul>
+	<li>
+<code>id</code>: The unique ID of the device</li>
+	<li>
+<code>timestamp</code>: The timestamp when the device was added to the collection, in&nbsp;UTC milliseconds</li>
+	<li>
+<code>status</code>: The status of the device</li>
+	<li>
+<code>operatingParams</code>: the object containing operating parameters of the device</li>
+	<li>
+<code>asset</code>: The object containing information about the asset of the device</li>
+	<li>
+<code>parent</code>: <strong>Optional.</strong> The object containing information about the parent of the device</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>The operating parameters object has the following schema:</p>
+
+<ul>
+	<li>
+<code>rotorSpeed</code>: The rotor speed of the device</li>
+	<li>
+<code>slack</code>: The slack in the device</li>
+	<li>
+<code>rootThreshold</code>: The root threshold for the device</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>The asset object has the following schema:</p>
+
+<ul>
+	<li>
+<code>id:</code> The unique ID of the asset</li>
+	<li>
+<code>alias</code>: The alias for the asset</li>
+</ul>
+
+<p>The parent object, if it is present, will have one or both of the following fields:</p>
+
+<ul>
+	<li>
+<code>id</code>:&nbsp;The unique ID of the parent of the asset</li>
+	<li>
+<code>alias</code>: The alias for&nbsp;the parent of the asset</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>Given string <em>statusQuery</em>, and numerical <em>parentId</em> value, the goal is to return the floor of the average rotor speed of all returned devices that have their parent identifier matching the <em>parentId</em> value. If there are no devices matching the given criteria, the result must be 0.</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Function Description </strong></p>
+
+<p>Complete the function <em>avgRotorSpeed</em> in the editor below.&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><em>avgRotorSpeed</em> has the following parameter(s):</p>
+
+<p>&nbsp; &nbsp; <em>statusQuery:</em>&nbsp;string to query for</p>
+
+<p>&nbsp; &nbsp; <em>parentId:</em> id of the parent to match</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Returns:</strong></p>
+
+<p>&nbsp;&nbsp;&nbsp; <em>int:</em> the floor of the average rotor speed of matching devices or 0 if there are none</p>
+
+<p>&nbsp;</p>
+<!-- <StartOfInputFormat> DO NOT REMOVE THIS LINE-->
+
+<details open=""><summary class="section-title">Input Format For Custom Testing</summary>
+
+<div class="collapsable-details">
+<p>In the first line, there is a string <em>statusQuery</em>.</p>
+
+<p>In the second line, there is an integer <em>parentId</em>.</p>
+</div>
+</details>
+<!-- </StartOfInputFormat> DO NOT REMOVE THIS LINE-->
+
+<details open="open"><summary class="section-title">Sample Case 0</summary>
+
+<div class="collapsable-details">
+<p><strong>Sample Input For Custom Testing</strong></p>
+
+<pre>RUNNING
+7
+</pre>
+
+<p><strong>Sample Output</strong></p>
+
+<pre>3880</pre>
+
+<p><strong>Explanation</strong></p>
+
+<p>The status query is "RUNNING" and the parent identifier is 7, so we are interested in the average rotor speed of all returned devices having a parent identifier of 7. There are 4 such devices and their rotor speeds are 4721, 4446, 1592 and 4761 respectively. Their average rotor speed is (4721 + 4446 + 1592 + 4761)/4 = 15520/4 = 3880. Therefore, the final answer is 3880 rounded down to integer value which is 3880.</p>
+</div>
+</details>
+</div>

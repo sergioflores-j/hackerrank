@@ -1,0 +1,151 @@
+<h1>How many sentences?</h1>
+<div class="ps-content-wrapper-v0">
+<div class="preheader" style="display:none;">How many permutations of the sentences can you create with anagrams?</div>
+
+<p>"An&nbsp;<b>anagram</b>&nbsp;is a word formed by rearranging the letters of a different word, typically using all the original letters exactly once."</p>
+
+<p>&nbsp;</p>
+
+<p>Considering this definition, given an array of words and an array of sentences, calculate how many sentences can be created by replacing any word with their anagrams.</p>
+
+<p>&nbsp;</p>
+
+<p class="section-title">Example</p>
+
+<p><em>wordSet = ['listen', 'silent']</em></p>
+
+<p><em>sentences = ['listen it is silent']</em></p>
+
+<p>&nbsp;</p>
+
+<p><u><em>Listen</em></u> and <em><u>silent</u> are anagrams</em>. Those two words can be replaced, so the four sentences that can be created are:</p>
+
+<ul>
+	<li>listen it is silent</li>
+	<li>listen it is listen</li>
+	<li>silent it is silent</li>
+	<li>silent it is listen</li>
+</ul>
+<!--
+<p>There is a&nbsp;set of n words. The task is given m sentences each consisting of w words each, find out how many different sentences can be formed by rearranging the characters of zero or more words in the sentence, such that the rearranged word should exist in the set. Given a set &nbsp;s = {<code style="color:green;">bat</code>, <code style="color:green;">tab</code>,<code style="color:blue;">act</code>, <code style="color:blue;">cat</code>, best, test}. Here if we rearrange the characters of the word <em>bat</em>, we can get: <em>atb, abt, tab, tba, bta, and bat.&nbsp;</em>But of these only tab is &nbsp;present in&nbsp;the&nbsp;set. Similarly for string&nbsp;<em>best</em>&nbsp;no other&nbsp;string except <em>best&nbsp;</em>can be obtained by rearranging the word.</p>
+-->
+
+<p>&nbsp;</p>
+
+<p class="section-title">Function Description</p>
+
+<p>Complete the <em>countSentences</em>&nbsp;function in the editor below.</p>
+
+<p>&nbsp;</p>
+countSentences has the following parameters:
+
+<p>&nbsp;&nbsp;&nbsp; <em>string wordSet[n]:</em>&nbsp; an array of strings</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<em>string sentences[m]:</em>&nbsp; an array of strings</p>
+
+<p>&nbsp;</p>
+
+<p>Returns:</p>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;<em>int[]:</em> an array of <em>m</em> integers that denote the number of sentences that can be formed from each sentence</p>
+
+<p>&nbsp;</p>
+
+<p class="section-title">Constraints</p>
+
+<ul>
+	<li>0&nbsp;<em>&lt; n ≤ 10<sup>5</sup>&nbsp;</em>
+</li>
+	<li><em>1&nbsp;≤ length of each word&nbsp;≤ 20</em></li>
+	<li><em>1 ≤ m ≤ 1000&nbsp;</em></li>
+	<li><em>3 ≤ &nbsp;words in a sentence ≤ 20</em></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<details><summary class="section-title">Input Format For Custom Testing</summary>
+
+<div class="collapsable-details">
+<p>Input from stdin will be processed and passed to the function as follows:</p>
+
+<p>&nbsp;</p>
+
+<p>The first line contains an integer <em>n </em>denoting the number of elements in&nbsp;<em>wordSet[]</em>.</p>
+
+<p>Each of the next <em>n</em> lines contains a string <em>wordSet[i]</em>.</p>
+
+<p>The next line contains an integer <em>m </em>denoting the number of elements in <em>sentences[]</em>.</p>
+
+<p>Each of the next <em>m</em> lines contains a string <em>sentences[i] </em>made up of a number of words separated by spaces.</p>
+<!-- removed reference to w as it varies per line.  It's not a provided value. 
+Each line <em>i</em> of the <em>m</em>&nbsp;subsequent lines (where <em>0 &le; i &lt; m</em>) contains w, here <em>w</em> represents the number of words in each sentence,&nbsp;space separated strings representing the words of &nbsp;<em>sentences[i]</em>.</p>
+-->
+</div>
+</details>
+
+<details open="open"><summary class="section-title">Sample Case 0</summary>
+
+<div class="collapsable-details">
+<p class="section-title">Sample Input</p>
+
+<pre>STDIN     Function
+-----&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----
+6&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;→  wordSet[] size n = 6
+the&nbsp;&nbsp; &nbsp;→  wordSet = ['the', 'bats', 'tabs', 'in', 'cat', 'act']
+bats
+tabs
+in
+cat
+act
+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ sentences[] size m = 3
+cat the bats  →  sentences = ['cat the bats', 'in the act', 'act tabs in']
+in the act
+act tabs in</pre>
+
+<p>&nbsp;</p>
+
+<p class="section-title">Sample Output</p>
+
+<pre>4
+2
+4</pre>
+
+<p>&nbsp;</p>
+
+<p class="section-title">Explanation</p>
+
+<p><em>Sentence 1</em>: For the sentence '<em>cat the bats'</em>,&nbsp;the sentences that can be formed are:</p>
+
+<ul>
+	<li>cat the bats</li>
+	<li>act the bats</li>
+	<li>cat the tabs</li>
+	<li>act the tabs</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p><em>Sentence 2</em>: For the sentence '<em>in the act'</em>,&nbsp;the sentences that can be formed are:</p>
+
+<ul>
+	<li>in the act</li>
+	<li>in the cat</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;<em>Sentence 3</em>: For the sentence '<em>act tabs in'</em>, the sentences that can be formed are:</p>
+
+<ul>
+	<li>act tabs in</li>
+	<li>cat tabs in</li>
+	<li>act bats in</li>
+	<li>cat bats in</li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>Therefore, the integer array returned is [4, 2, 4].</p>
+</div>
+</details>
+</div>
